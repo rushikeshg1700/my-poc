@@ -14,7 +14,7 @@ export default function UserForm({ mode, user, onSave, onCancel }: UserFormProps
     firstName: "",
     lastName: "",
     email: "",
-    phone: 91,
+    phone: 0,
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -23,7 +23,7 @@ export default function UserForm({ mode, user, onSave, onCancel }: UserFormProps
     if (user) {
       setFormData(user);
     } else {
-      setFormData({ id: 0, firstName: "", lastName: "", email: "", phone: 91 });
+      setFormData({ id: 0, firstName: "", lastName: "", email: "", phone: 0 });
     }
   }, [user]);
 
