@@ -27,7 +27,7 @@ export default function UserForm({ mode, user, onSave, onCancel }: UserFormProps
     }
   }, [user]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>):void => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: name === "phone" ? Number(value) : value });
   };
@@ -76,7 +76,7 @@ export default function UserForm({ mode, user, onSave, onCancel }: UserFormProps
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent):void => {
     e.preventDefault();
     if (validate()) {
       onSave(formData);

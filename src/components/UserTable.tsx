@@ -12,7 +12,7 @@ export default function UserTable() {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [mode, setMode] = useState<"view" | "edit" | "add" | "">("");
 
-  const handleSave = (user: User) => {
+  const handleSave = (user: User):void => {
     if (mode === "edit" && selectedUser) {
       setUsers(users.map(u => (u.id === selectedUser.id ? user : u)));
     } else if (mode === "add") {
@@ -22,11 +22,11 @@ export default function UserTable() {
     setMode("");
   };
 
-  const handleDelete = (userId: number) => {
+  const handleDelete = (userId: number):void => {
     setUsers(users.filter(user => user.id !== userId));
   };
 
-  const handleCancel = () => {
+  const handleCancel = ():void => {
     setMode(""); 
     setSelectedUser(null); 
   }
