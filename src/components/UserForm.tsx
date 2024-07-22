@@ -32,28 +32,33 @@ export default function UserForm({ mode, user, onSave, onCancel }: UserFormProps
     setFormData({ ...formData, [name]: name === "phone" ? Number(value) : value });
   };
 
+  const validateNameField = (field: "firstName" | "lastName", value: string): string | null => {
+    if (!value.trim()) {
+      return `${field === "firstName" ? "First" : "Last"} name is required`;
+    } else if (value.length < 2) {
+      return `${field === "firstName" ? "First" : "Last"} name must be at least 2 characters`;
+    } else if (value.length > 50) {
+      return `${field === "firstName" ? "First" : "Last"} name cannot exceed 50 characters`;
+    } else if (!/^[a-zA-Z-' ]+$/.test(value)) {
+      return `${field === "firstName" ? "First" : "Last"} name can only contain letters, hyphens, and apostrophes`;
+    }
+    return null;
+  };
+
   const validate = (): boolean => {
     const errors: { [key: string]: string } = {};
 
-    if (!formData.firstName.trim()) {
-      errors.firstName = "First name is required";
-    } else if (formData.firstName.length < 2) {
-      errors.firstName = "First name must be at least 2 characters";
-    } else if (formData.firstName.length > 50) {
-      errors.firstName = "First name cannot exceed 50 characters";
-    } else if (!/^[a-zA-Z-' ]+$/.test(formData.firstName)) {
-      errors.firstName = "First name can only contain letters, hyphens, and apostrophes";
+    const firstNameError = validateNameField("firstName", formData.firstName);
+    if (firstNameError) {
+      errors.firstName = firstNameError;
     }
 
-    if (!formData.lastName.trim()) {
-      errors.lastName = "Last name is required";
-    } else if (formData.lastName.length < 2) {
-      errors.lastName = "Last name must be at least 2 characters";
-    } else if (formData.lastName.length > 50) {
-      errors.lastName = "Last name cannot exceed 50 characters";
-    } else if (!/^[a-zA-Z-' ]+$/.test(formData.lastName)) {
-      errors.lastName = "Last name can only contain letters, hyphens, and apostrophes";
+    const lastNameError = validateNameField("lastName", formData.lastName);
+    if (lastNameError) {
+      errors.lastName = lastNameError;
     }
+
+   
 
     if (!formData.email.trim()) {
       errors.email = "Email is required";
