@@ -5,6 +5,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <>
+    <h1>Hello</h1>
       <nav
         className="bg-purple-700 text-white flex md:justify-between flex-col md:flex-row min-h-12
         items-center p-3"

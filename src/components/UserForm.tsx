@@ -89,8 +89,9 @@ export default function UserForm({ mode, user, onSave, onCancel }: UserFormProps
         <h2 className="text-xl mb-4 text-black">{mode === "edit" ? "Edit User" : mode === "view" ? "View User" : "Add User"}</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700">First Name</label>
+            <label htmlFor="firstName" className="block text-gray-700">First Name</label>
             <input
+              id="firstName"
               type="text"
               name="firstName"
               value={formData.firstName}
@@ -102,8 +103,9 @@ export default function UserForm({ mode, user, onSave, onCancel }: UserFormProps
             {errors.firstName && <span className="text-red-500 text-sm">{errors.firstName}</span>}
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Last Name</label>
+            <label htmlFor="lastName" className="block text-gray-700">Last Name</label>
             <input
+              id="lastName"
               type="text"
               name="lastName"
               value={formData.lastName}
@@ -115,8 +117,9 @@ export default function UserForm({ mode, user, onSave, onCancel }: UserFormProps
             {errors.lastName && <span className="text-red-500 text-sm">{errors.lastName}</span>}
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Email</label>
+            <label htmlFor="email" className="block text-gray-700">Email</label>
             <input
+              id="email"
               type="email"
               name="email"
               value={formData.email}
@@ -128,8 +131,9 @@ export default function UserForm({ mode, user, onSave, onCancel }: UserFormProps
             {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Phone</label>
+            <label htmlFor="phone" className="block text-gray-700">Phone</label>
             <input
+              id="phone"
               type="number"
               name="phone"
               value={formData.phone}
